@@ -1,0 +1,62 @@
+Pyhon Zen
+
+1) 	Beatiful is better than ugly
+   	Bello è meglio di bruto
+
+2) 	Explicit is better than implicit
+   	Esplicito è meglo che implicito
+
+3) 	Simple is better than complex
+	semplice è meglio che complesso
+
+4) 	Complex is better than complicated
+	Complesso è meglio che complicato
+
+5) 	Flat is better than nested
+	Lineare è meglio che nidificato
+
+6) 	Sparse is better than dense
+	Sparso è meglio che denso
+
+7) 	Readability counts
+	La leggibilità conta
+
+8) 	Special cases aren't special enough to break the rules
+	I casi speciali non sono abbastanza speciali per infrangere le regole
+
+
+9) 	Although practicaly beats purity
+	Anche se la praticità batte la purezza
+
+10) Errors should never pass silently
+	Gli errori non dovrebbero mai passare sotto silezio
+
+11) Unless explicity silenced
+	A maeno che non vengano espressamente messi a tacere
+
+12) In the face of ambiguity, refuse the temptation to guess.
+	In caso di ambiguità, rifiuta la tentazione di indovinare
+
+13) There should be one-- and preferability only one --obvius way
+	Ci dovrebbe essere un modo ovvio -- e preferibilmente uno solo -- di fare le cose
+
+14) Althouh that way may not be obvious at first unless you're Dutch
+	Anche se questo modoo potrebbe non essere ovvio da subito, a meno che non siate olandesi
+
+15) Now is better than never
+	Ora è meglio che mai
+
+16) Although never is often than *right* now.
+	Sebbene se mai è spesso meglio di proprio adesso
+
+17) If the implementation is hard to explain, it's a bad idea.
+	Se l'implementazione è difficile da spiegare l'implementazione è pessima
+
+18) If the implementation is easy to explain, it may be a good idea
+	Se l'implemntazione è semplice da spiegare, l'idea puo' essere buona
+
+19) Namespaces are one honking great idea -- let's do more of those!
+	I namespace sono un grande idea usiamoli il più possibile
+
+Doing one thing well
+
