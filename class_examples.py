@@ -1,3 +1,17 @@
+class Garage:
+    def __init__(self) -> None:
+        self.cars = []
+    
+    def __len__(self):
+        return len(self.cars)
+
+garage_ford = Garage()
+garage_ford.cars.append("Fiesta")
+garage_ford.cars.append("Focus")
+
+print(len(garage_ford))
+
+
 class Vehicle:
 
     vehicle_count = 0

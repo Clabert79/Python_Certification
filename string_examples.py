@@ -113,6 +113,14 @@ print (s1.translate(trantab1))
 # print s1.translate(trantab2)
 # print(s1.maketrans({ord('i'):None}))
 
+print("Method Split")
+
+s0 = 'String methods in python'.split(' ', maxsplit=1)
+print(s0)
+
+s0 = 'String methods in python'.rsplit(' ', maxsplit=1)
+print(s0)
+
 s2 = 'Un giorno, se avro\' tempo, andro\' a correre'
 
 split1 = s2.split()
@@ -774,8 +782,100 @@ str19 = '  Hello  World   From DigitalOcean \t\n\r\tHi There  '
 
 str20 = " ".join(str19.split())
 
-print("6) ",str20)
+print("6) ", str20)
 
+'''
+'ascii'     Character values in the range [0x00, 0x7f].
+'latin1'    Character values in the range [0x00, 0xff]. Also known as 'iso-8859-1'.
+'utf-8'     Variable-length encoding that allows all Unicode characters to be represented.
+'cp1252'    A common text encoding on Windows.
+'macroman'  A common text encoding on Macintosh.
+'''
+
+text_1 = 'hello'                  # Text
+byte_1 = text_1.encode('utf-8')   # Encode to bytes
+
+byte_2 = b'world'                  # Bytes
+text_1 = byte_2.decode('utf-8')   # Decode to text
+
+'''
+d       Decimal integer or long integer.
+b       Binary integer or long integer.
+o       Octal integer or long integer.
+x       Hexadecimal integer or long integer.
+X       Hexadecimal integer (uppercase letters).
+f, F    loating point as [-]m.dddddd.
+e       Floating point as [-]m.dddddde±xx.
+E       Floating point as [-]m.ddddddE±xx.
+g, G    Use e or E for exponents less than [nd]4 or greater than the precision; otherwise use f.
+n       Same as g except that the current locale setting determines the decimal point character.
+%       Multiplies a number by 100 and displays it using f format followed by a % sign.
+s       String or any object. The formatting code uses str() to generate strings.
+c       Single character
+'''
+
+# https://realpython.com/python-formatted-output/
+
+x = 123.456
+format(x, '0.2f')       # '123.46'
+format(x, '10.4f')      # '  123.4560'
+# format(x, '<*10.2f')    # '123.46****' NON FUNZIONA
+
+x = 123.456
+    # '123.46****'
+print(format(x, '10.4f')) #123.4560
+print(format(x, '>#016.4f')) #00000000123.4560
+print(format(x, '<#010.4f')) #123.456000
+
+# print('Value is {val:<*10.2f}' .format(val=x))
+
+name = 'Bill Doe'
+balance = 13.566
+# indica la direzione dove verrà indentato '>' tutto a destra
+print(f"- {name:>12}")      #-     Bill Doe
+print(f"- {balance:>12}")   #-       13.566
+
+print(f"- {name:<12}")      #- Bill Doe 
+print(f"- {balance:<12}")   #- 13.566
+
+x = 123456.78
+format(x, '16,.2f')   # '      123,456.78'
+
+name = 'Elwood'
+r = format(name, '<10')     # r = 'Elwood    '
+r = format(name, '>10')     # r = '    Elwood'
+r = format(name, '^10')     # r = '  Elwood  '
+r = format(name, '*^10')    # r = '**Elwood**'
+
+x = 42
+r = format(x, '10d')        # r = '        42'
+r = format(x, '10x')        # r = '        2a'
+r = format(x, '10b')        # r = '    101010'
+r = format(x, '010b')       # r = '0000101010'
+
+y = 3.1415926
+r = format(y, '10.2f')      # r = '      3.14'
+r = format(y, '10.2e')      # r = '  3.14e+00'
+r = format(y, '+10.2f')     # r = '     +3.14'
+r = format(y, '+010.2f')    # r = '+000003.14'
+r = format(y, '+10.2%')     # r = '  +314.16%'
+
+x = 123.456
+print(f'Value is {x:0.2f}')         # 'Value is 123.46'
+print(f'Value is {x:10.4f}')        # 'Value is   123.4560'
+print(f'Value is {2*x:*<10.2f}')    # 'Value is 246.91****'
+
+y = 3.1415926
+width = 8
+precision=3
+
+r = f'{y:{width}.{precision}f}'   # r = '   3.142'
+
+name = 'Dave'
+
+#b'Hello %s' % name                    # TypeError!
+result = b'Hello %s' % name.encode('utf-8')    # Ok
+print(result)
 '''
 # -----------------------------------------------
 txt = "pippo+pluto+pluto+pippo"

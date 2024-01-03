@@ -1,5 +1,12 @@
 import sys
-print(sys.version)
+
+print(2 ** 3 ** 2 ** 1) # 2 elevato alla 9
+
+#-----------------------------------------------------------------------------
+
+x = float("2")
+y = float("4")
+print(y ** 0.5) # 2.0
 
 print('Peter' 'Wellert') # unisce in automatico le 2 stringhe
 
@@ -1233,3 +1240,20 @@ for k in range(len(dct)):
     v = dct[v]
 
 print("end -->", v)
+
+data = [1, {}, (2,), (), {3}, [4, 5]]
+points = 0
+ 
+for i in range(len(data)):
+    if type(data[i]) == list:
+        points += 1
+    elif type(data[i]) == tuple:
+        points += 10
+    elif type(data[i]) == set:
+        points += 100
+    elif type(data[i]) == dict:
+        points += 1000
+    else:
+        points += 10000
+ 
+print(points)

@@ -1,5 +1,27 @@
 import sys
 
+
+#Custom Exception
+class RuntimeErrorWithCode(TypeError):
+    """ This is a single-line docstring"""
+    def __init__(self, message, code):
+        super().__init__(f'Error code{code}: {message}')
+        self.code = code
+    
+err = RuntimeErrorWithCode('An Custom error happened', 500)
+
+class UncountableError(ValueError):
+    def __init__(self, wrong_value) :
+        super().__init__(f"Invalid value for n. {wrong_value}. N must be greate than 0")
+
+def count_from_zero_to_n(n):
+    if n < 1:
+        raise UncountableError(n)
+    for x in range(0, n + 1):
+        print(x)
+
+count_from_zero_to_n(-5)
+
 '''
 try:
     x = float(input("Inserisci un numero: "))
@@ -233,6 +255,7 @@ def linux_interaction():
     assert ('linux' in sys.platform), "Function can only run on Linux systems."
     print('Doing something.')
 
+
 try:
     linux_interaction()
 except AssertionError as error:
@@ -253,5 +276,9 @@ finally:
 
 
 x = 10
-if x > 5:
-    raise Exception('x should not exceed 5. The value of x was: {}'.format(x))
+if(x > 10):
+    if x > 5:
+        raise Exception('x should not exceed 5. The value of x was: {}'.format(x))
+
+
+
