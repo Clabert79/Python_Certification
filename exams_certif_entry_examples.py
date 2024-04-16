@@ -1,5 +1,8 @@
 import sys
 
+foo = (1, 2, 3)
+print(foo.index(3)) # cerca l'elemento e retituisce l'indice se non esiste restuisce un valuerror
+
 print(2 ** 3 ** 2 ** 1) # 2 elevato alla 9
 
 #-----------------------------------------------------------------------------
@@ -320,7 +323,6 @@ any()
 print(var1)
 
 print('PPPPPPPPPPP-11111111111111111111111111111111111111111111111111111111')
-
 
 boolean_test = 0
 
@@ -1257,3 +1259,75 @@ for i in range(len(data)):
         points += 10000
  
 print(points)
+
+
+print(1 // 2) # 0
+
+#-----------------------------------------------------------------
+
+chr(ord('p') + 3) # aumeta la lettera in oridine alfabetico
+
+
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(x[::2]) # [1, 3, 5, 7, 9]
+x[::2] = 10, 20, 30, 40, 50 # devono avere lo stesso numero di elementi in questo caso 5
+print(x[::2])
+
+x = float('23.42')
+tot = bool(x) + True
+print(tot) # --> 2
+
+list1 = ['Peter', 'Paul', 'Mary', 'Jane']
+list2 = ['Peter', 'Paul', 'Mary', 'Jane']
+ 
+print('list1 is not list2', list1 is not list2)
+print('list1 != list2', list1 != list2)
+ 
+list1 = list2
+print(" After list1 = list2 ...")
+print("list1 is not list2", list1 is not list2) # qui diventa False perchè adesso punta alla stessa area di memoria
+print("list1 != list2", list1 != list2)
+
+data = {}
+data[1] = 1
+data['1'] = 2
+data[1.0] = 4 # questo sovrascrive l'indice 1
+ 
+
+names = ['Peter', 'Paul', 'Mary', 'Jane', 'Steve']
+
+names = names[2:] # parte dal terzo elemento Mary
+
+res = []
+for name in names:
+    res.append(name[:3].upper()) # prende le prime 3 lettere
+
+a = 1
+b = 0
+c = a & b
+print("c = a & b ---> ", c)
+
+d = a | b
+print("d = a | b ---> ", d)
+
+e = a ^ b
+print("e = a ^ b ---> ", e)
+
+print(c + d + e)
+
+
+# Fare esercizi simile <<<<<
+print((3 * (1 + 2) ** 2 - (2 ** 2) * 3))
+
+str = 'Hello World'
+print(str[::-1]) # la riporta speculare 'dlroW olleH' -<<<<<
+
+print('------------------>>')
+# Senza not scrive solo i valori
+print(not 0) # True 0 è False in booleano
+print(not 23) # False
+print(not '') # True
+print(not 'Peter') # False
+print(not None) # True
+
+

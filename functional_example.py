@@ -359,3 +359,49 @@ product = reduce(lambda x, y: x * y, nums)
 
 pairs = reduce(lambda x, y: (x, y), nums, None)
 print(pairs)
+
+numbers =[10, 9, 49, 1, 81, 2, 4, 8, 25, 12]
+
+list_result = list(map(lambda x: x ** 2, filter(lambda x: x % 2 == 0, numbers)))
+print(list_result)
+
+fahrenheit = [41, 32, 212]
+
+list_result = list(map(lambda x: (x, (x -32) * 5/9), fahrenheit))
+print(list_result)
+
+colors = ['Rosso', 'arancione', 'Giallo', 'verde', 'Blu']
+print(min(colors, key=lambda s: s.lower()))
+
+print(max(colors, key=lambda s: s.lower()))
+
+names = ['Bob', 'Sue', 'Amanda']
+grade_point_averages = [3.5, 4.0, 3.75]
+
+#  zip permette di iterare su diversi iterabili nello stesso momento
+for name, gpa in zip(names, grade_point_averages):
+    print(f'Nome={name}; Media={gpa}')
+
+obj_zip = zip(names, grade_point_averages)
+
+print(tuple(obj_zip))
+
+names = ['Alice', 'Bob', 'Charlie']
+ages = [25, 30, 35]
+countries = ['USA', 'UK', 'Canada']
+
+data = list(zip(names, ages, countries))
+
+format_data = [f">> Name: {name}, Age: {age}, Country: {country} <<" for name, age, country in data ]
+
+print(format_data)
+
+fruits = ['banana', 'apple', 'pear']
+colors = ['yellow', 'red', 'green']
+
+zipped = zip(fruits, colors)
+
+unzipped_fruits, unzipped_colors = zip(*zipped)
+
+print(unzipped_fruits)
+print(unzipped_colors)

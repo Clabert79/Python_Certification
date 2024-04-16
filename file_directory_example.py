@@ -27,6 +27,7 @@ from pathlib import PurePath
 from pathlib import PurePosixPath
 import shutil
 
+
 print(Path.home())
 print(os.getcwd())
 
@@ -113,6 +114,27 @@ if path_ex_file.is_file():
     print("Delete file file: ") 
     Path(destinationfile).unlink() # <<<--- delete file
     print(os.listdir(path_dir_files))
+
+import pathlib
+
+def copmpute_usage(filename):
+    print(filename)
+    pathname = Path(filename)
+
+    if pathname.is_file():
+        print(' Is File !')
+        return pathname.stat().st_size
+    elif pathname.is_dir():
+        print(' Is Dir !')
+        return sum(path.stat().st_size 
+                   for path in pathname.rglob('*')
+                   if path.is_file())
+        
+        return pathname.stat().st_size() 
+    else:
+        return RuntimeError('Unsupporede file kinf')
+
+print('Size Files ',copmpute_usage(r"C:\Users\ClaudioBertolotto\Repository"))
 
 '''
 if not os.path.exists(dir_ex):

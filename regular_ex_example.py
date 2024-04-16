@@ -64,3 +64,35 @@ https://www.guru99.com/python-regular-expressions-complete-tutorial.html
 
 https://www.evemilano.com/come-funzionano-le-espressioni-regolari-regex/
 '''
+
+response = 'Valido' if re.fullmatch(r'\d{5}', '10040') else 'Non Valido'
+print(response)
+
+
+'''
+\d  ---> Qualsiasi cifra (0-9).
+\D  ---> Qualsiasi carattere che non è una cifra.
+\s  ---> Qualsiasi carattere di spaziatura (come spazi, tabulazioni e a capo).
+\S  ---> Qualsiasi carattere non di spaziatura.
+\w  ---> Qualsiasi carattere parola (detto anche carattere alfanumerico), ovvero
+    qualsiasi lettera minuscola o maiuscola, qualsiasi cifra o trattino basso.
+\W  ---> Qualsiasi carattere che non sia un carattere parola.
+'''
+
+'Match' if re.fullmatch(r'\d{3,6}', '123') else 'No match' # --> un numero da 3 a 6 cifre
+'Match' if re.fullmatch('famig?liare', 'famigliare') else 'No match' # --> ? 0 o una occrenza se sono maggiori da errore
+'Valido' if re.fullmatch('[A-Z][a-z]+', 'Wally') else 'Non valido' # --> '+' almeno una lettera Maiscola 
+
+result = re.search('divertente$', 'Python è divertente') # $ --> restituice il valore se si trova alla FINE della stringa
+print(result.group() if result else 'non trovato')
+
+result = re.seresult = re.search('^Python', 'Python è divertente') # ^ --> restituice il valore se si trova alla INIZIO della stringa
+print(result.group() if result else 'non trovato')
+
+contact = 'Wally White, Home: 555-555-1234, Work: 555-555-4321'
+re.findall(r'\d{3}-\d{3}-\d{4}', contact) # ['555-555-1234', '555-555-4321']
+
+#  finditer agisce come findall, ma restituisce un iterabile lazy composto da oggetti match.
+
+for phone in re.finditer(r'\d{3}-\d{3}-\d{4}', contact):
+    print(phone.group())

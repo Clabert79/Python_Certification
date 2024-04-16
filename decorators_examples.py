@@ -267,7 +267,6 @@ def is_prime(number: int) -> bool:
     
     value =  range(2, int(sqrt(number) + 1))
 
-    
     for element in range(2, int(sqrt(number) + 1)):
         if number % element == 0:
             return False
@@ -332,3 +331,21 @@ That function is attached to the class.
 '''
 p = Point(2, 3)
 print(p)
+
+from functools import wraps
+def logged(func):
+    # Idea:Give me a function, I' ll put logging
+    # around it
+
+    print('Adding logging to', func.__name__)
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print('You called', func.__name__)
+        return func(*args, **kwargs)
+    
+    # importando wraps questa parte non serve più
+    #wrapper.__name__ = func.__name__
+    #wrapper.__doc__ = func.__doc__
+
+    return wrapper

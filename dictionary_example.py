@@ -1175,3 +1175,53 @@ dict_01 = {"dog": "chien",  "horse": "cheval","cat": "chat"}
 print(dict_01.keys())
 dict_01_key_ord = sorted(dict_01.keys())
 print(dict_01_key_ord)
+
+
+country_codes = {'Finlandia':'fi', 'Sudafrica':'za', 'Nepal':'np'}
+print(len(country_codes))
+
+if country_codes:
+	print("There are elements in Dict")
+else:
+	print("There are NOT elements in Dict")
+
+for state_name in sorted(country_codes.keys()):
+	print(f"il nome del Paese {state_name}")
+
+print('---------------------------------------------')
+
+grade_book = {
+	'Susan':[92, 85, 100],
+	'Eduardo':[83, 95, 79],
+	'Azizi':[92, 89, 82],
+	'Pantipa':[97, 91, 92]
+}
+
+all_grades_total = 0
+all_grades_count = 0
+
+for name, grades in grade_book.items():
+	grades_total = sum(grades)
+	print(f'La media di {name} è {grades_total/len(grades):2f}')
+	all_grades_total += grades_total
+	all_grades_count += len(grades)
+
+print(f'La media della classe è : {all_grades_total / all_grades_count : 2f}')
+
+country_dict_codes = {}
+
+country_dict_codes.update({'Sudafrica':'sa'})
+country_dict_codes.update({'Sudafrica':'za'})
+print(country_dict_codes)
+
+country_dict_codes.update(Australia='au')
+print(country_dict_codes)
+
+months = {'Gennaio':1, 'Febbraio':2, 'Marzo':3}
+months2 ={number: name for name, number in months.items()}
+print(months2)
+
+grades = {'Sue':[98, 87, 94], 'Bob':[84, 95, 91]}
+grades2 = {k: sum(v) / len(v) for k, v in grades.items()}
+
+print(grades2)

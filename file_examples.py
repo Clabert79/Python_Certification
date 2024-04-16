@@ -1,4 +1,13 @@
 
+import io
+
+# metodo lettura più grezzo
+raw = io.FileIO('filename.txt', 'r')
+buffer = io.BufferedReader(raw) 
+file_01 = io.TextIOWrapper(buffer, encoding='utf-8')
+print(file_01)
+
+
 # https://www.datacamp.com/community/tutorials/reading-writing-files-python?utm_source=adwords_ppc&utm_campaignid=9942305733&utm_adgroupid=100189364546&utm_device=c&utm_keyword=&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=255798340456&utm_targetid=aud-517318241987:dsa-929501846124&utm_loc_interest_ms=&utm_loc_physical_ms=20609&gclid=CjwKCAjw8df2BRA3EiwAvfZWaHICHyRTZ58-qgFRUj0REIOenZqYlkMQiG3sFkf8s0bxWtCpc2xxhxoCSFIQAvD_BwE
 
 

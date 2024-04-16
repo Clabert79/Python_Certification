@@ -195,8 +195,6 @@ print(a_list)
 converted_set = set(a_list)
 print(converted_set)
 
-
-
 print("--------------------------------")
 #Cancellazione
 set_del = {1, 2, 3, 4, 5, 6, 7, 8, 9}
@@ -252,3 +250,38 @@ print(names_set)
 # https://www.appsloveworld.com/coding/python3x/13/why-is-the-order-of-python-sets-not-deterministic-even-when-pythonhashseed0
 set_c = {"B","a","A","z","c"}
 print(set_c)
+
+{1, 3, 5} == {3, 5, 1} # True
+{1, 3, 5} != {3, 5, 1} # False
+
+{1, 3, 5} < {3, 5, 1} # False
+
+print({1, 3, 5} < {3, 5, 1, 0}) # Valuta la Lunghessaz in questo caso è True
+
+'''
+L’operatore <= ci dice se l’insieme alla sua sinistra è un sottoinsieme improprio di quello sulla destra, 
+ovvero se tutti gli elementi dell’operando di sinistra sono anche elementi dell’operando di destra e i due insiemi possono anche essere uguali:
+'''
+
+{1, 3, 5} <= {3, 5, 1} #True
+print({1, 3, 5, 4} <= {3, 5, 1, 4, 2, 5})
+
+{1, 3, 5}.issubset({3, 5, 1}) # True
+{1, 2}.issubset({3, 5, 1}) # False
+
+{1, 3, 5}.issuperset({3, 5, 1}) #True
+{1, 3, 5}.issuperset({3, 2}) # False
+
+'''
+La differenza simmetrica (o unione disgiunta) tra due insiemi è l’insieme che contiene quegli elementi di
+entrambi gli insiemi che appartengono esclusivamente a uno o all’altro insieme.
+'''
+
+{1, 3, 5} ^ {2, 3, 4} # {1, 2, 4, 5}
+{1, 3, 5, 7}.symmetric_difference([2, 2, 3, 3, 4, 4]) # {1, 2, 4, 5, 7}
+
+'''
+Due insiemi si dicono disgiunti quando non hanno elementi in comune.
+'''
+{1, 3, 5}.isdisjoint({2, 4, 6}) # True
+{1, 3, 5}.isdisjoint({4, 6, 1}) # False

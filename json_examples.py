@@ -4,7 +4,9 @@ from tkinter.tix import Tree
 print(sys.version_info)
 
 # pip install requests
-# import requests
+import requests
+
+
 
 ''' import requests
 https://realpython.com/python-json/
@@ -189,5 +191,17 @@ person3 = json.loads(person3_json) # da Stringa loads <<<<
 
 numbers = [2, 3, 5, 7, 11, 13]
 contet = json.dumps(numbers)
-print(type(contet)) # tipo stringa
+print("Type 'Dumps' ---->> ",type(contet)) # class 'str'
 print(contet)
+
+j_numbers = json.loads(contet)
+
+print("Type 'Load' ---->> ", type(j_numbers)) # class 'list'
+print(j_numbers)
+
+data = '{"employee": {"name": "John", "age": 30, "city": "New York"}}'
+
+json_data = json.loads(data)
+
+print("Type 'Load' ---->> ", type(json_data)) # class 'dict'
+(json_data)

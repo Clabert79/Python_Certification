@@ -79,7 +79,6 @@ f_1('Spam')
 f_1('Ham')
 f_1('Eggs')
 
-
 def tester(start):
     def nested(label):
         print(label, nested.state)
@@ -461,21 +460,21 @@ my_function_scope_1()
 print(var)
 
 
-my_list_2 = [1, 2, 3, 7]
+my_list_3 = [1, 2, 3, 7]
 my_list_1 = [0, 1, 2, 3, 4]
 
 def my_function_scope_2(my_list_1):
     print("Print List ##1:", my_list_1)
-    print("Print List #2: >> ", my_list_2) # si va a prendere la lista fuori dalla funzione (molto pericoloso)
+    print("Print List #2: >>>>> ", my_list_3) # si va a prendere la lista fuori dalla funzione (molto pericoloso)
     del my_list_1[0]  # canella l'elemento in tutte le liste
-    my_list_2.append(17) # affiunge l'elemeto in tutte le liste
+    my_list_3.append(17) # affiunge l'elemeto in tutte le liste
 
     print("Print #3:", my_list_1)
-    print("Print #4: >>", my_list_2)
+    print("Print #4: >>>>>>", my_list_3)
 
 my_function_scope_2(my_list_1)
 
-print("Print #5:", my_list_2)
+print("Print #5: >>>>>>>>>>>", my_list_3)
 
 
 def outer():
@@ -553,5 +552,41 @@ def countdown_local(start):
         display()
         decrement()
 
-
 countdown_local(30)
+
+pipp = ["2","3","4"]
+pluto = "pluto"
+def modify_global():
+    # se non viene dichiarato internamente prende quella globale se è una variabile "immutabile"
+    print("STR inside the function " + pluto) 
+    
+    # print("before inside ---> ", pipp) una referenza all'oggetto non riesce a trovarla e si rompe
+    
+    pipp = [1,2,3]
+    print("after ", pipp)
+
+
+modify_global()
+
+print(pipp)
+
+def append_global(pipp):
+    pipp.append("z") #aggiunge a quella globale
+    print("inside append ", pipp)
+
+append_global(pipp)
+
+print("-----> ", pipp)
+
+# -----------------
+num = 7
+
+print(f'ID {id(num)} Num 1 --->', num)
+
+def cube(num):
+    print(f'ID {id(num)} Num Inside func --->', num)
+    num = num ** num
+    return num
+
+cube(num)
+print(f'ID {id(num)} Num 2 --->', num)

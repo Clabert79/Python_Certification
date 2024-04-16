@@ -815,6 +815,7 @@ c       Single character
 '''
 
 # https://realpython.com/python-formatted-output/
+# https://docs.python.org/3/library/string.html#formatspec Ufficiale
 
 x = 123.456
 format(x, '0.2f')       # '123.46'
@@ -904,3 +905,155 @@ for name in list_name:
     print(names_clear)
 
 '''
+
+symbol = '>'
+
+symbol *= 5
+
+print(symbol)
+
+name = 'Pan'
+name += ' Black'
+bar = '*'
+bar *= len(name)
+
+print(f'{bar}\n {name}\n{bar}')
+
+'''
+title: impone tutti i primi caratteri a Maiuscolo e i seguenti a minuscolo
+capitalize: prima lettera maiscola
+https://www.toppr.com/guides/python-guide/references/methods-and-functions/methods/string/title/python-string-title/#:~:text=title()%20%E2%80%93%20Python%20title(),uppercase%20and%20others%20to%20lowercase.
+'''
+
+txt = 'i have to reach office by 9:00'
+print('Title --->> ', txt.title())
+print('Capitalize --->> ', txt.capitalize())
+print('>>>')
+
+txt = 'HELLO Students, WELcome BAck'
+print('Title --->> ', txt.title())
+print('Capitalize --->> ', txt.capitalize())
+print('>>>')
+
+txt = '101hacks with python'
+print('Title --->> ', txt.title())
+print('Capitalize --->> ', txt.capitalize())
+print('>>>')
+
+sentence = 'to be or not to be that is the question'
+
+sentence.count('to') # 2 occorenze
+sentence.count('to', 12) # partendo da 12 ne trova solo 1
+
+sentence.count('that', 12, 25) #inizio fine
+sentence.index('be') # 3 posizione
+
+sentence.rindex('be') # 16 partendo da destra
+
+print('that' in sentence) #True
+print('THAT' in sentence) #False
+
+print('THAT' not in sentence) # True
+
+sentence.startswith('to') #True
+values = '1\t2\t3\t4\t5'
+values.replace('\t', ',')
+print(values) # '1,2,3,4,5'
+
+letters_list = ['A', 'B', 'C', 'D']
+
+letters = ','.join(letters_list)
+
+sequence_numbers = ','.join([str(i) for i in range(10)])
+print(sequence_numbers)
+
+student_votes = 'Amanda: 89, 97, 92'
+
+student_votes_tuple = student_votes.partition(': ')
+
+print(type(student_votes_tuple), '--->>' , student_votes_tuple)
+
+print("ISALNUM ...")
+
+print('A9876'.isalnum())
+print('20100 Milano'.isalnum()) #False ci sono gli spazi
+print('20100Milano'.isalnum())  #True
+
+'''
+isalnum() : Restituisce True se la stringa contiene solo caratteri alfanumerici (cioè cifre e lettere).
+
+isalpha() : Restituisce True se la stringa contiene solo caratteri alfabetici (cioè lettere).
+
+isdecimal() : Restituisce True se la stringa contiene solo caratteri interi decimali (in base 10) e
+non contiene i simboli + o -.
+
+isdigit() : Restituisce True se la stringa contiene solo cifre .
+
+isidentifier() : Restituisce True se la stringa rappresenta un identificatore valido
+
+islower() : Restituisce True se tutti i caratteri alfabetici nella stringa sono minuscoli.
+
+isnumeric() : Restituisce True se i caratteri nella stringa rappresentano un valore numerico
+senza + o - e senza punto decimale
+
+isspace() : Restituisce True se la stringa contiene solo caratteri di spaziatura.
+
+istitle() : Restituisce True se il primo carattere di ogni parola nella stringa è un carattere maiuscolo
+isupper() : Restituisce True se tutti i caratteri alfabetici nella stringa sono maiuscoli.
+
+'''
+
+sentence = 'to be or not to be that is the question'
+
+print('Index', sentence.index('be')) 
+
+print('Find', sentence.find('be'))
+
+try:
+    print('Index', sentence.index('bex')) 
+except ValueError:
+    print('Value Error index not found')
+
+print('Find', sentence.find('bex')) # -1 se non viene trovato
+
+print('that' in sentence) # per cercare le sotto stringhe
+
+sentence.startswith('to')
+sentence.endswith('question')
+
+#Rimpiazzare le sottostringhe
+
+values = '1\t2\t3\t4\t5'
+replace_value = values.replace('\t', ',') 
+
+print(replace_value)
+
+result_partion = 'Amanda: 89, 97, 92'.partition(': ')
+
+print(result_partion) # divide la stringa in 3 parti
+
+lines = """Questa è la riga 1
+Questa è la riga 2
+Questa è la riga 3"""
+
+lines_split = lines.splitlines()
+
+print(type(lines_split), lines_split)
+
+', '.join(reversed('Pamela White'.split()))
+
+
+file_content = """hi there and welcome.
+... this is a special hidden file with a secret secret.
+... i don't want to tell you the secret,
+... but i do want to secretly tell you that i have one."""
+
+file_content.index("secret") # prima posizione della stringa
+file_content.index("secret", 60) # prima posizione della stringa a partire da
+file_content.count("secret") # quante volte è usato 
+[word for word in file_content.split() if "secret" in word]
+
+m = re.search(r"secret\w+", file_content)
+
+print(m.group())
+print(m.span())

@@ -1,23 +1,43 @@
 # https://www.enricozini.org/blog/2007/pygnami/datetime/
 # https://www.w3schools.com/python/python_datetime.asp
 
+# pip install pytz <<<<<<<
+import pytz
+# pip install python-dateutil <<<<<<
+from dateutil.parser import parse
 import datetime
 import datetime as dt
 from time import time
-# pip install pytz
-import pytz
-# pip install python-dateutil
-from dateutil.parser import parse
+import time
+
+print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+result_time = time.localtime(1672214933)
+print("result:", result_time)
+print("\nyear:", result_time.tm_year)
+print("tm_hour:", result_time.tm_hour)
+
+result_time = time.gmtime(1672214933)
+print("result:", result_time)
+print("\nyear:", result_time.tm_year)
+print("tm_hour:", result_time.tm_hour)
+
+time_tuple = (2022, 12, 28, 8, 44, 4, 4, 362, 0)
+seconds = time.mktime(time_tuple)
+print(seconds)
+
+t = (2022, 12, 28, 8, 44, 4, 4, 362, 0)
+
+result = time.asctime(t)
+print("Asctime:", result)
+print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
 t = datetime.time(1,2,3)
 t1 = datetime.time(1,2,3)
-
 
 print(t)
 print('Ora: ' + str(t.hour))
 print('Minuti: ' + str(t.minute))
 print('Secondi: ' + str(t.second))
-
 
 if t == t1:
 	print("uguali")
@@ -101,7 +121,6 @@ d_time_4 = datetime.datetime(2018, 6, 13)
 print("d1 is greater than d2 : ", d_time_3 > d_time_4)
 print("d1 is less than d2 : ", d_time_3 < d_time_4)
 print("d1 is not equal to d2 : ", d_time_3 != d_time_3)
-
 
 group_date = []
 

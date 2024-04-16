@@ -330,3 +330,13 @@ y = 16, which is 0001 0000 in binary.
 >> does a bitwise right shift, e.g., y >> 1 = 8, which is 0000 1000 in binary
 << does a bitwise left shift, e.g., y << 3 = , which is 1000 0000 in binary,
 '''
+
+x = 0
+y = 1
+x = x ^ y
+print("x = x ^ y ->", x)
+y = x ^ y
+print("y = x ^ y ->", y)
+y = x ^ y
+print("y = x ^ y ->", y)
+print(x, y)

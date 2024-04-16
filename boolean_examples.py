@@ -42,6 +42,14 @@ false_boolean = False
 if not false_boolean:
     print("FALSEEE !!!")
 
+n = 0
+if n > 0:
+    print("*")
+elif n == True:
+    print("**")
+else:
+    print("***") # <<<-----
+
 bool(False)
 bool(None)
 bool(0)
@@ -109,7 +117,6 @@ i = 1
 j = not not i # i è iniziamente true poi viene trasformata in false dal primo not e poi riconvertita in true dal primo not.
 print(j)
 
-
 a = 1
 b = 0
 c = a & b
@@ -122,3 +129,12 @@ print("e", e)
 
 print("c+ d + e", c+ d + e)
 
+print("------------------------------------------------>>>")
+
+print(not 0) # True
+print(not 23) # False
+print(not '') # True
+print(not 'Peter') # False
+print(not None) # True
+
+print('mike' > 'Mike') # True
