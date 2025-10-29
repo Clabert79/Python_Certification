@@ -2,7 +2,6 @@ print(walrus := True)
 print(type(walrus))
 
 # No Walrus Operator
-
 inputs = list()
 
 while True:
@@ -10,6 +9,8 @@ while True:
     if current == "quit":
         break
     inputs.append(current)
+
+print("add for commit")
 
 # Walrus Operator
 inputs = list()
