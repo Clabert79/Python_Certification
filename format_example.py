@@ -1,4 +1,36 @@
+# https://pyformat.info/
+
+print(f"{5+5=}") #5+5=10
+
+nswer = 42
+print(f"{{answer}}") # prints "{42}"
+# print(f"{ord('\"')}") # SyntaxError
+
+# print(f"{ord('\n')}")     # SyntaxError
+newline_ord = ord('\n')
+print(f"{newline_ord}")   # prints "10"
+
 n = 12345678990
+
+from decimal import Decimal
+print(f'{Decimal("10000000000000000000000000.0"):.3f}') # 10000000000000000000000000.000
+print(f'{Decimal("10000000000000000000000000.0"):.3g}') # 1e+25
+print(f'{Decimal("10000000000000000000000000.0"):.3E}') # 1.000E+22
+print(f'{Decimal("10000000000000000000000000.0"):.3e}') # 1.000e+22
+
+print(f'{Decimal("10000000000000000000000000.0"):.0f}') # 10000000000000000000000000
+
+print(f'[{27:+10d}]') # [        27]
+print(f'[{27:+010d}]') # [000000000027]
+
+print(f'[{"Amanda":>10}]\n[{"Amanda":^10}]\n[{"Amanda":<10}]') 
+'''
+[    Amanda]
+[  Amanda  ]
+[Amanda    ]
+'''
+
+print(f"The value of n is {n:, }")
 
 print(f"The value of n is {n:,}")
 
@@ -10,7 +42,6 @@ print(' Padding ....')
 s = 'ABC'
 padding = 'X'
 len = 8
-
 
 x = s.rjust(4, '-')
 print(x)

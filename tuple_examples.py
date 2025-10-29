@@ -310,3 +310,19 @@ def get_relevant_skills(item):
 	return skills.get("python", 0 + skills.get("js", 0))
 
 print(sorted(data.items(), key=get_relevant_skills, reverse=True))
+
+#  namedtuple
+# https://docs.python.org/3/library/collections.html#collections.namedtuple
+
+from collections import namedtuple
+
+Card = namedtuple('Card', ['face', 'suit'])
+card = Card(face='Ace', suit='Spades')
+
+print(card.face)
+print(card.suit)
+
+namedtuple_values = ['Queen', 'Hearts']
+card_news = Card._make(namedtuple_values)
+
+card._asdict() # restituisce un oggetto simile ad un dizionario OrderedDict([('face', 'Queen'), ('suit', 'Hearts')])

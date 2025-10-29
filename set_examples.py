@@ -16,6 +16,7 @@ print(x1.isdisjoint(x2)) # --->> False
 x1.issubset(x2) # --->> False
 print(x1 < x2)
 print(x1.issuperset({'foo', 'bar'})) # -->> true
+print(set('abc def ghi jkl mno').issuperset('hi mom'))
 
 x1.update(['corge', 'garply'])
 print(x1)
@@ -285,3 +286,28 @@ Due insiemi si dicono disgiunti quando non hanno elementi in comune.
 '''
 {1, 3, 5}.isdisjoint({2, 4, 6}) # True
 {1, 3, 5}.isdisjoint({4, 6, 1}) # False
+
+{1, 3, 5} & {2, 3, 4}  # 3
+{1, 3, 5}.intersection([1, 2, 2, 3, 3, 4, 4])  # 1, 3
+
+{1, 3, 5} - {2, 3, 4} # {1, 5}
+{1, 3, 5, 7}.difference([2, 2, 3, 3, 4, 4]) # {1, 5, 7}
+
+{1, 3, 5} ^ {2, 3, 4} # {1, 2, 4, 5}
+{1, 3, 5, 7}.symmetric_difference([2, 2, 3, 3, 4, 4])
+{1, 2, 4, 5, 7}
+
+{1, 3, 5}.isdisjoint({2, 4, 6}) #  True
+{1, 3, 5}.isdisjoint({4, 6, 1}) # False
+
+{1, 3, 5} < {3, 5, 1} # False
+{1, 3, 5} < {3, 5, 1, 0} # True
+{1, 3, 5} < {3, 5, 1, 0} # True
+{1, 3, 5} < {3, 5, 1, 0} # True 
+
+numbers = {1, 3, 5}
+numbers |= {2, 3, 4} # {1, 2, 3, 4, 5}
+print(numbers)
+
+numbers.update(range(10)) # {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} modifca l'insieme che lo richiama
+print(numbers)

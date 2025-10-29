@@ -160,3 +160,24 @@ class FRange:
 nums = FRange(0.0, 1.0, 0.1)
 for x in nums:
     print(x)
+
+
+class stepper:
+    def __getitem__(self, i):
+        return self.data[i]
+
+X1 = stepper()
+X1.data = "Spam"    
+print(X1[1])
+
+for item in X1:
+    print(item, end=',')    
+
+
+print('p' in X1)
+print([c for c in X1])
+print(list(map(str.upper, X1)) )
+print(tuple(X1), list(X1), ''.join(X1))
+
+(a, b, c, d) = X1
+print(a,c,d)

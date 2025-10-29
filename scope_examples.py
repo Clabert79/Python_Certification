@@ -6,9 +6,88 @@ Python searchesuptofour scopes—the local (L) scope, then the local scopes of a
 If the name is not found during this search, Python reports an error.
 '''
 
+x_x = 11
+def f1():
+    print(x_x)
+
+def g1():
+    x_x = 22
+    print(x_x)
+
+class C1:
+    x_x = 33
+    def o(self):
+        print("'o' method")
+        x_x = 44
+        self.x_x = 55
+        print(x_x)
+    def m(self):
+        print("'m' method")
+        print(x_x)
+    def n(self):
+        print("'n' method")
+        print(self.x_x)
+f1()
+g1()
+
+c = C1()
+c.n()
+c.o()
+c.n()
+
+pippo = "spam"
+
+def bey():
+
+    pippo = "eggs"
+    def bye_inner():
+        nonlocal pippo # modifica la variabile esterna
+        pippo = "inner eggs"
+        print(pippo)
+    
+    bye_inner()
+    print(pippo)
+
+bey()
+
+space = "spam out"
+
+def func_space():
+    print(space)
+
+func_space()
 print("--------------------------------------------------------------------------------")
+print("NO LOCAL")
+spamm = "spam"
+bacon = [1,1]
+print("Bacon id ",id(bacon), ", ", bacon)
+
+def order():
+    print("Start order ...")
+    eggs = 12
+   # bacon = [1,2] se aggiungo questa riga di codice viene creato un nuovo oggetto
+    bacon.append(3)
+
+    def cook():
+        print("start cook ...")
+        nonlocal eggs
+
+        if spamm:
+            print("Spam ", spamm) # viene letta quella esterna
+        
+        if eggs:
+            eggs -=1
+            print("Eggs ", eggs)
+
+        if bacon:
+            print("Bacon id ",id(bacon), ", ", bacon)
+
+    cook()  
+
+order()
 
 
+print("--------------------------------------------------------------------------------")
 def show_truth_string():
     my_var_str = "Surprise STR Inside"
     my_list_var.append("Inside func")
@@ -63,7 +142,6 @@ def outer():
 
 outer()
 
-
 def tester(start):
     state = start
 
@@ -92,7 +170,6 @@ f_2('spam')
 f_2('ham')
 print(f_2.state)
 
-
 state = [1,2,4,5]
 
 def tester(start):
@@ -105,7 +182,6 @@ def tester(start):
     return nested
 
 tester(5)
-
 
 X1 = 'Spam1'
 def func():
@@ -136,7 +212,6 @@ print( 'b', b)
 print( 'c', c)
 
 print('Finish Local ....')
-
 
 print('----------------------------------------------------')
 

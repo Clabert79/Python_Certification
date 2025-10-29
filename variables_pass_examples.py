@@ -5,9 +5,6 @@ def func_1(c,d):
     print(c,d)
     return
 
-
-
-
 a = 'foo'
 b = 'bar'
 
@@ -66,3 +63,47 @@ intro(Firstname="John", Lastname="Wood", Email="johnwood@nomail.com", Country="W
 *args and **kwargs make the function flexible.
 '''
 
+print('----------------------------------------')
+# https://towardsdatascience.com/whats-the-difference-between-is-and-in-python-dc26406c85ad
+# https://realpython.com/python-is-identity-vs-equality/
+
+spam = 1234567899999999999999
+maps = spam
+eggs = 1234567899999999999999
+
+# in questo caso spam e maps puntano allo stesso oggetto
+print(spam is maps)
+print(spam is maps)
+print(spam is eggs) 
+print(id(spam), id(maps), id(eggs))
+
+print('----------------------------------------')
+
+# the is statement is syntactic sugar ---> for id(a) == id(b)
+pippo = "12345"
+pippo_n = "12345"
+pippo_c1 = pippo
+pippo_c2 = pippo[:]
+
+print("pippo is pippo_n ---> ", pippo is pippo_n)
+print("pippo == pippo_n ---> ", pippo == pippo_n)
+
+print("pippo is pippo_c1 ---> ", pippo is pippo_c1)
+print("pippo == pippo_c1 ---> ", pippo == pippo_c1)
+
+print("pippo is pippo_c2 ---> ", pippo is pippo_c2)
+print("pippo == pippo_c2 ---> ", pippo == pippo_c2)
+
+
+print("Explosion Variable ... ")
+
+seq_01 = [1,2,3,4,]
+a, b, c, d = seq_01
+print("a, b, c, d ", " --> ", a, b, c, d)
+
+a, *b = seq_01
+print("a, *b", " --> ", a, b)
+
+
+*a, b = seq_01
+print("a, *b", " --> ", a, b)

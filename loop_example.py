@@ -1,3 +1,102 @@
+
+print(sum((x**2 for x in range(6) if x % 2 !=0 ), 20)) # aggiunge 10 alla somma
+
+# *args(tutti i parametri in ingresso)  **kwargs(chiave velore)
+def super_func(*args, **kwargs):
+	print("ARGS: ", args)
+	print("KWARGS: ", kwargs)
+	total = 0
+	for item in kwargs.values():
+		total += item
+	
+	return sum(args)
+
+print(super_func(1,3,4,5,6, num1 = 7,num2 = 8))
+print("----------------------")
+
+L0 = [2,4,6,8]
+sum = 0
+for x in L0:sum += x 
+
+L1 = [1, 2, 3, 4, 5]
+for x in L1:
+	x += 1
+print("L1 --> ", L1) # non si modifica
+print("x --> ", x)
+
+for i in range(len(L1)): #somma gli elementi della lista
+	L1[i] += 1
+print("L1 --> ", L1) # si modifica
+
+L2 = [x+1 for x in L1] # non aggiorna la Lista originale
+print("L1 --> ", L1)
+print("L2 --> ", L2)
+
+L3 =list(zip(L1, L2)) # cobina insieme le 2 liste
+print("L3 --> ", L3)
+
+print('---------------------')
+
+L4 = [1, 2, 3, 4, 5]
+for i in range(len(L4)):
+	L4[i] += 10
+
+# deve essere sostituito con
+L5 = [x+10 for x in L4]
+# questo è più veloce e più Pythonic
+
+from re import match
+
+x = ["abc123", "def456", "ghi789"]
+pattern = r"abc\d+"
+
+found = False
+while x and not found:
+	if match(pattern, x[0]):
+		print('Ni')
+		found = True
+	else:
+		x = x[1:]
+
+if not found:
+	print('not found')
+
+#questa funzione può essere sostituita con questa che implemtea else
+
+while x :
+	if match(pattern, x[0]):
+		print('Ni')
+		break
+	x = x[1:]
+else:
+	print('not found !!')
+
+
+y = 4
+x = y // 2
+if y <= 2:
+	print(y, 'is prime no check')  
+
+# Se il ciclo viene interrotto da un break, l'else viene saltato:
+while x > 1:
+	if y % x == 0:
+		print(y, 'has factor ', x)
+		break
+	x -= 1
+else:
+	print(y, 'is prime')  
+
+colors = ['verde', 'arancione', 'giallo']
+
+list_enum_colors = list(enumerate(colors))
+print(list_enum_colors)
+
+tuple_enum_colors = tuple(enumerate(colors))
+print(tuple_enum_colors)
+
+for index, value in enumerate(colors):
+	print(f'{index}, {value}')
+
 print('---------------------')
 print('Vari import')
 print('---------------------')
@@ -42,18 +141,6 @@ print('Hai importato il modulo', my_module .__name__)
 
 print(sys.modules)
 print('---------------------')
-
-# *args(tutti i parametri in ingresso)  **kwargs(chiave velore)
-def super_func(*args, **kwargs):
-	print(args)
-	print(kwargs)
-	total = 0
-	for item in kwargs.values():
-		total += item
-	return sum(args)
-
-print(super_func(1,3,4,5,6, num1 = 7,num2 = 8))
-print("----------------------")
 
 my_list = (1,2,3,4,5,6,7)
 
@@ -250,10 +337,7 @@ print(duplicates)
 for i in (x ** 2 for x in range(10) if x % 2 == 0):
 	print(i, end =' ')
 
-print(sum((x**2 for x in range(6) if x % 2 !=0 ), 20)) # aggiunge 10 alla somma
-
 print(locals())
-
 
 my_list_4 = [1, 2, 3, 3, 3, 4, 5, 6, 7, 7, 7, 7,7]
 print(Counter(my_list_4))

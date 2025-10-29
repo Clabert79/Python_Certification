@@ -35,3 +35,32 @@ list(range(4, 5, -2))  # beyond the stop is omitted []
 data = [i for i in range(-1, 2)]
 
 print(data)
+
+for i in range(1, 11): # 1 a 10
+     print('I --->> ', i)
+
+# Unsando la funzione range c'è un grosso risparmio di memoria
+import sys
+
+sequence = [i for i in range(11111)]
+print(sys.getsizeof(sequence)) # 95864
+
+range_sequence = range(11111) 
+print(sys.getsizeof(range_sequence)) # 48
+
+list_test = ['a', 'c', 'd', 'e', 'z']
+
+for i in range(len(list_test)):
+     print(i, " --> ", list_test[i])
+
+numbers = [3, 9, 7, 5]
+
+for i in range (len(numbers)):
+     numbers[i] *= 2
+
+print(numbers)
+
+word = "programming"
+# Stampa coppie di lettere tranne la prima e l'ultima
+for i in range(1, len(word) -2):
+     print(word[i:i+2])

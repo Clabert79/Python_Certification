@@ -267,8 +267,6 @@ def countdown(start):
 		decrement()
 
 countdown(20)
-
-
 class Result:
 	def __init__(self, value=None, exc=None) -> None:
 		self._value = value
@@ -417,5 +415,25 @@ def make_init(*names):
 class Vecotr:
 	__init__ = make_init('x', 'y', 'z')
 
+print("-----------------------------------------")
+print("CLOSURE")
+print("-----------------------------------------")
 
 
+def multiplier(factor):
+    def multiply(x):
+        return x * factor
+    return multiply
+
+#Usage
+quadruple = multiplier(4)
+triple = multiplier(3)
+
+
+print(quadruple(5))  # Output: 20
+print(triple(5))  # Output: 15
+
+
+
+print("4 X --->> ", quadruple(5))  # Output: 20
+print("4 X --->> ", triple(5))  # Output: 15

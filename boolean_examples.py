@@ -1,5 +1,26 @@
 # https://stackoverflow.com/questions/31354429/why-is-true-is-false-false-false-in-python#:~:text=Python%20interprets%20multiple%20(in)equalities,is%20is%20equivalent%20to%20%3D%3D%20.
 
+'''
+ None constant, values representing zero, 
+ and empty collections are all considered “falsey,” 
+ while most other values are “truthy.”
+'''
+print("None")
+print("-----------------------------------------------------------------------")
+none = None
+if(none):
+    print("NO")
+else:
+    print("None IS False")
+
+if(none):
+    print("NO")
+elif none is False : # in questo caso invece restiuesce False ---> if not none:
+    print("'NONE' is False")
+else:
+    print("None is not True and is not False")
+print("-----------------------------------------------------------------------")
+
 x = 1, 0, -1, [0], 1 
 y = 0, 1 > 0 or []
 
@@ -30,13 +51,6 @@ if 3:
 else:
     print("NO")
 
-none = None
-if(none):
-    print("NO")
-elif none is False : # in questo caso invece restiuesce False ---> if not none:
-    print("'NONE' is False")
-else:
-    print("None is not True and is not False")
 
 false_boolean = False
 if not false_boolean:
@@ -138,3 +152,23 @@ print(not 'Peter') # False
 print(not None) # True
 
 print('mike' > 'Mike') # True
+
+
+# Operatore Ternario in Python
+a = 't' if 'spam' else 'f'
+print(a)
+
+a = 't' if '' else 'f'
+print(a)
+
+# Usare la funzione Bollean
+# a = [z, y][bool(x)]
+
+b = ['t','f'][bool('')]
+print(b)
+
+b = ['t','f'][bool('spam')]
+print(b)
+
+b = ['minore','maggiore'][bool(3 > 4)] # False --> 0 True --> 1
+print(b)

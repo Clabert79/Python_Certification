@@ -1,0 +1,4 @@
+Command Utili:
+
+1) serve per abilitare i permessi ad eseguire script in powershell
+    "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted"

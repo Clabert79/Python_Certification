@@ -6,6 +6,15 @@ from itertools import islice
 
 #PEP-0342.
 
+print("-------------------------------------------------------")
+m = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+G = (sum(row) for row in m)
+print(next(G))
+print(next(G))
+print(next(G))
+print("-------------------------------------------------------")
+
 # funzione base di generators
 def generator_function():
     for i in range(10):

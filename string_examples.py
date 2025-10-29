@@ -139,6 +139,12 @@ print(" ".join(l1))
 s3 = '-'.join(s2.split())
 print(s3)
 
+rds_instance = "db-rdsname"
+
+splits = rds_instance.split('-')[1:]
+print('-'.join(splits))
+
+
 # rimuovono gli spazi
 s4 = '    Stringa con    spazzi all \' interno'
 print(s4.lstrip().strip())
@@ -1057,3 +1063,79 @@ m = re.search(r"secret\w+", file_content)
 
 print(m.group())
 print(m.span())
+
+url = 'http://www.deitel.com/books/PyCDS/table_of_contents.html'
+
+rest_of_url, separator, document = url.rpartition('/')
+
+print(rest_of_url, " <<-->> " , separator , " <<-->> ", document) # <<-->> / <<-->> table_of_contents.html
+
+lines = """Questa è la riga 1
+        Questa è la riga 2
+        Questa è la riga 3"""
+
+result_lines = lines.splitlines() # se si passa True lines.splitlines(True) si mantiene lo spazio finale '\n'
+
+print(type(result_lines), result_lines)
+
+result_reverse =  ', '.join(reversed('Pamela White'.split()))
+print(result_reverse) # White, Pamela
+
+'''
+isalnum()       ---> Restituisce True se la stringa contiene solo caratteri alfanumerici (cioè cifre e lettere).
+isalpha()       ---> Restituisce True se la stringa contiene solo caratteri alfabetici (cioè lettere).
+isdecimal()     ---> Restituisce True se la stringa contiene solo caratteri interi decimali (in base 10) e 
+                non contiene i simboli + o -.
+isdigit()       ---> Restituisce True se la stringa contiene solo cifre . 
+isidentifier()  ---> Restituisce True se la stringa rappresenta un identificatore valido.   
+islower()       ---> Restituisce True se tutti i caratteri alfabetici nella stringa sono minuscoli.
+isnumeric()     ---> Restituisce True se i caratteri nella stringa rappresentano un valore numerico
+                senza + o - e senza punto decimale. 
+isspace()       ---> Restituisce True se la stringa contiene solo caratteri di spaziatura.
+istitle()       ---> Restituisce True se il primo carattere di ogni parola nella stringa è un carattere maiuscolo.
+isupper()       ---> Restituisce True se tutti i caratteri alfabetici nella stringa sono maiuscoli.
+'''
+
+
+print('--------------------------------------------------------------------------')
+print('Performance Uso di JOIN')
+print('--------------------------------------------------------------------------')
+
+import timeit
+import matplotlib.pyplot as plt
+
+strings = ["Hello", "World"] * 10000
+
+setup = """
+strings = {0}
+""".format(strings)
+
+concat_with_plus = """
+result = ""
+for string in strings:
+    result += string + " "
+"""
+
+concat_with_join = """
+result = " ".join(strings)
+"""
+iterations = list(range(100, 1100, 100))
+
+time_plus = []
+time_join = []
+
+for number in iterations:
+    time_plus.append(timeit.timeit(concat_with_plus, setup=setup, number=number))
+    time_join.append(timeit.timeit(concat_with_join, setup=setup, number=number))
+
+plt.figure(figsize=(12, 8))
+plt.plot(iterations, time_plus, label='+ operator', marker='o', color='tab:orange')
+plt.plot(iterations, time_join, label='join() method', marker='o', color='tab:blue')
+plt.xlabel('Number of iterations', fontsize=14)
+plt.ylabel('Execution time (seconds)', fontsize=14)
+plt.title('Comparison of Execution Time: + Operator vs join() Method', fontsize=16)
+plt.legend(fontsize=12)
+plt.grid(True)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.show()

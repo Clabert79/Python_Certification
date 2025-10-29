@@ -1,6 +1,38 @@
 import copy
 import shelve
 
+n = 5
+d_init_pythonic = {i: i** 2 for i in range(1, n)}
+
+print("Pythonic --> ", d_init_pythonic)
+# vs
+
+d_init_no = {}
+for i in range(1, n):
+	d_init_no[i] = i** 2
+
+print("NO Pythonic --> ", d_init_no)
+
+d_0 = dict([('a', 100), ['b',200]])
+print(d_0)
+
+dict_02 = {'a':1, 'b':2, 'c':3}
+print("Before ....")
+k_1 = dict_02.keys()
+v_1 = dict_02.values()
+print(list(k_1))
+print(list(v_1))
+print("Before ....")
+del dict_02['b'] # si modifica in place e si ripercuote sulle varie viste
+print("After ....")
+print(list(k_1))
+print(list(v_1))
+
+print("Union ....")
+dict_03 = {'a': 2, 'b': 3, 'x': 4}
+united_keys =  dict_02.keys() | dict_03.keys()
+
+print("----> ", united_keys )
 
 # https://www.youtube.com/watch?v=qX0qqEVpP5s
 # https://www.youtube.com/watch?v=2B8Nh3pJEFE
@@ -1225,3 +1257,24 @@ grades = {'Sue':[98, 87, 94], 'Bob':[84, 95, 91]}
 grades2 = {k: sum(v) / len(v) for k, v in grades.items()}
 
 print(grades2)
+
+# Creazione di dizionari con zip tutto il percoso
+
+D1 = {"spam":1, 'eggs':3, 'toast':5}
+
+D2 = {}
+D2['spam'] = 1
+D2['eggs'] = 3
+D2['toast'] = 5
+print(D2)
+
+keys = ['spam', 'eggs', 'toast']
+vals = [1, 3, 5]
+
+print(list(zip(keys, vals)))
+
+D3 = {}
+for (k, v) in zip(keys, vals):
+	D3[k] = v
+
+D3 = dict(zip(keys, vals)) # <<< questa è quella definitiva

@@ -1,6 +1,22 @@
 import sys
 
 
+try:
+    print('Suite senza eccezioni')
+except:
+    print('Non verrà mai eseguita')
+else:
+    print('else è eseguita perché non ci sono eccezioni nella suite try')
+finally:
+     print('la clausola finally viene sempre eseguita')
+
+#per rilanciare un eccezione
+try:
+    IndexError("spam")
+except IndexError:
+    print("Propaghting")
+    raise #rigenra l'eccezione più recente
+
 #Custom Exception
 class RuntimeErrorWithCode(TypeError):
     """ This is a single-line docstring"""
@@ -211,8 +227,6 @@ RuntimeError                A generic “something bad happened” error
 TypeError                   Operation applied to an object of the wrong type
 UnboundLocalError           Usage of a local variable before a value is assigned”
 '''
-
-
 try:
     # user_input = input('Please enter a number!')
     user_input = 'one'  # Just for convenience
@@ -279,6 +293,15 @@ x = 10
 if(x > 10):
     if x > 5:
         raise Exception('x should not exceed 5. The value of x was: {}'.format(x))
+
+# Assert
+'''
+assert <test>, <dati> la parte dati opzionale
+equivale
+if __debug__:
+    if not <test>:
+        raise AsserttionError(<dati>)
+'''
 
 
 

@@ -2,13 +2,17 @@
 def nome_funzione(lista_parametri):
     return espressione
 
-    lambda lista_parametri: espressione
+lambda lista_parametri: espressione
 
-'''
+def <lambda>(parameters):
+    return expression
 
+lambda x, y: x + y    
+    
+avvalersi delle lambda laddove serve una piccola funzione con utilizzo limitato 
+a una espressione
 
-'''
-avvalersi delle lambda laddove serve una piccola funzione con utilizzo limitato a una espressione
+a lambda may only consist of a single return expression!
 '''
 
 #lambda par1, par2,..., parN: espressione
@@ -142,8 +146,6 @@ h = maker(3) # mette la funzione nella variabile
 print(h)
 print(h(4)) # 4 ** 3 again
 
-
-
 def knights():
     title = 'Sir'
     action = (lambda x: title + ' ' + x)
@@ -271,3 +273,13 @@ g = lambda y, x=x: x * y
 
 print(f(10))       # --> prints 20
 print(g(10))       # --> prints 50
+
+people = [
+    ("Jason", "McDonald"),
+    ("Denis", "Pobedrya"),
+    ("Daniel", "Foerster"),
+    ("Jaime", "López"),
+    ("James", "Beecham")
+]
+
+by_last_name = sorted(people, key=lambda x: x[1])

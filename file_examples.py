@@ -1,6 +1,21 @@
 
 import io
 
+#posizionamento file
+fo = open("foo.txt", "r+")
+print("Name of the file: ", fo.name)
+line = fo.readline()
+print("Read Line 1:", line)
+line = fo.readline()
+print("Read Line 2:", line)
+
+fo.seek(0, 0)
+line = fo.readline()
+print("Read Line 0:", line)
+
+
+fo.close()
+
 # metodo lettura più grezzo
 raw = io.FileIO('filename.txt', 'r')
 buffer = io.BufferedReader(raw) 

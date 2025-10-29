@@ -1,0 +1,11 @@
+Virtual Env
+
+python -m venv nome_ambiente
+
+# Su Windows
+nome_ambiente\Scripts\activate
+
+# Su macOS/Linux
+source nome_ambiente/bin/activate
+
+deactivate

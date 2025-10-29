@@ -1,3 +1,17 @@
+S = 'spam'
+
+# Versione Senza enumerate
+offset = 0
+for item in S:
+    print(item, 'appears at offset', offset)
+    offset += 1
+
+
+# Versione con enumerate
+for i, item in enumerate(S):
+    print(item, 'appears at offset', i)
+
+
 friends = ["Rolf", "Jhon", "Anna"]
 
 for counter, friend in enumerate(friends):

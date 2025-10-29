@@ -1,4 +1,44 @@
 import re
+
+'''
+https://regex101.com
+http://www.regexlib.com
+https://www.regular-expressions.info
+
+'''
+
+'Valido' if re.fullmatch('[A-Z][a-z]*', 'Wally') else 'Non valido' # deve iniziare con la lettera Maiuscola e avere solo lettere
+
+'Match' if re.fullmatch('[^a-z]', 'A') else 'No match' # '^' serve a negare quindi in questo caso che NON sono lettere minuscole
+
+print('Match' if re.fullmatch('[x+$]', 'x') else 'No match') # ('[x+$]' deve contenere solo il carattere x (il primo carattere indicato) 
+
+email = input("What's your email ?").strip()
+if re.search(r"^\w+@(\w+\.)?\w+\.edu$", email, re.IGNORECASE):
+    print("Valid")
+else:
+    print("Not Valid")
+
+name = input("What's your Name ?").strip()
+
+'''
+matches = re.search(r"^(.+), ?(.+)$", name)
+if matches:
+   name = matches.group(1) + " " + matches.group(2)
+'''
+# nuovo operatore semplifica
+if matches := re.search(r"^(.+), *(.+)$", name):
+    name = matches.group(1) + " " + matches.group(2)
+    
+print(f"Hello, {name}")
+
+url = input("URL:").strip()
+
+username = re.sub(r"^(https?://)?(www\.)?twitter\.com/","",url)
+print(f"Username{username}")
+
+
+
 c = re.compile(r"\b(?=\w{8}\b)\w{1,4}tex\w*") # la r sta per raw e indica al python di non eleborare backslash\
 s = "texwille ritexwil ritexto 12tex345"
 
@@ -96,3 +136,33 @@ re.findall(r'\d{3}-\d{3}-\d{4}', contact) # ['555-555-1234', '555-555-4321']
 
 for phone in re.finditer(r'\d{3}-\d{3}-\d{4}', contact):
     print(phone.group())
+
+#Il metacarattere '^' posto all’inizio di un’espressione regolare (ma non tra parentesi quadre) 
+#indica che l’espressione deve combaciare solo con l’inizio della stringa
+print(result = re.search('^Python', 'Python è divertente')) # verifica che l'espressione inizi con Python 
+
+#Il metacarattere '$' posto alla fine di un’espressione regolare (ma non tra parentesi quadre)
+#indica che l’espressione deve combaciare solo con la fine della stringa
+print(result = re.search('divertente$', 'Python è divertente')) # verifica che l'espressione finisca con divertente
+
+#findall e finditer: trovare tutte le corrispondenze in una stringa 
+
+contact = 'Wally White, Home: 555-555-1234, Work: 555-555-4321'
+
+telephone_numbers = re.findall(r'\d{3}-\d{3}-\d{4}', contact)
+
+for number in telephone_numbers:
+    print(number)
+
+for phone in re.finditer(r'\d{3}-\d{3}-\d{4}', contact):
+    print(phone.group())
+
+text = 'Charlie Cyan, e-mail: demo1@deitel.com'
+pattern = r'([A-Z][a-z]+ [A-Z][a-z]+), e-mail: (\w+@\w+\.\w{3})' 
+
+result = re.search(pattern, text)
+
+result.groups() # restituisce una tupla con i gruppi trovati
+result.group(1) # restituisce il primo gruppo trovato
+
+result.group() # restituisce tutto il gruppo trovato 'Charlie Cyan, e-mail: demo1@deitel.com'

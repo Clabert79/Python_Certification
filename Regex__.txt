@@ -1,0 +1,204 @@
+Regex
+
+https://regex101.com/
+
+file_[abcde]\.doc -->  prende tutte le parole che iniziano con 'file_' che contiene una delle lettere nelle parentesi quadre e finisce con '.doc' . nelle paentesi individua solo uno di essi
+
+file_[a-e]\.doc sortisce lo stesso effetto intende compreso all'interno delle parentesi []
+
+[0-9-] il primo "-" rappresenta compreso il secondo vuole dire semplicement -
+
+“0x[0-9A-F][0-9A-F]”
+indivua tutti i numeri esadecimali es. 0x43
+
+[^123] il carattere ^ vuol dire tutto tranne
+
+[^a-z ,0-9] in questo caso è esclusivo tutto quello che non è lettere minuscole e numeri
+
+\s...\s terminatore prende tutte le parole che hanno 3 lettere (prende anche gli spazzi prima e dopo)
+
+\b...\b questa risolve il problema precedente ma considera lo spazio una lettera perchè il punto è un carattere jolly
+
+\b[a-zA-Z][a-zA-Z][a-zA-Z]\b  la soluzione solo pr le lettere
+
+\b\w\w\w\b dovrebbe essere la soluzione per i caratteri speciali ma a me non funziona
+
+b e w saranno sempre complementari
+
+^\d\d\d\d$ individua 4 numeri "^" è l'inizio della parola "$" fine "\d" numeri
+
+^[Vv]ia\s cerca via
+
+\?$ punto di domnda alla fine della frase
+
+“b[0-9]+\b” solo cifre in numero flessibile
+"\b\d+\b"
+"[\w.]+@[\w.]+\.\w+" in questo modo diciamo che il . puo' essere contenuto nella prima pate della mail
+
+"\w+[\w.]*@[\w.]+\.\w+" questa è una miglioria che riesce a escudere un . all'inizio della Mail usando il carattere "*"
+l'unica differenza con il caarattere "+" è che valuta anche 0 occorenze
+
+^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$ versione diversa per verifcare la mail
+
+"?" il carattere intende puo' essere presente 0 o una volta
+"https?://"
+"^\d{2,4}\b" le parentesi graffe servono ad indicare quante volte
+
+“^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$”
+^			-->	ancoraggio per inizio riga
+[A-Z]{6} 	-->	6 caratteri alfabetici
+\d{2}		--> 2 caratteri numerici
+[A-Z]		--> carattere alfabetico
+\d{2}		--> 2 caratteri numerici
+[A-Z]		--> carattere alfabetico
+\d{3}		--> 3 numerici
+[A-Z]		--> carattere alfabetico
+$			--> ancoraggio fine stringa
+
+“\b\d{3,}\b” limite dei 3 numeri
+"<.+?>" solo i tag. Il punto interrogativo in questo caso serve a fermare l'ingordigia
+<[^>]+> versione finale
+
+
+“Il quantificatore ˝+˝ indica la ripetizione di una o più volte dell'espressione precedente.
+Il quantificatore ˝*˝ indica la ripetizione di zero o più volte dell'espressione precedente.
+Il quantificatore ˝?˝ indica la ripetizione di zero o una volta dell'espressione precedente.
+I quantificatori ˝{ }˝ indicano la ripetizione di un numero ˝{n}˝ o di un intervallo preciso ˝{n,m}˝ di volte dell'espressione che li precede.
+Abbiamo anche affrontato il concetto di ingordigia delle regex e di come trasformarla in pigrizia con il modificatore ˝?˝.”
+
+
+"(yx)+" serve a ricercare le varie occorenze della stringa yx
+
+"\b(\w)(\w)\2\1\b" trova tutte le parole 'palindrome' cioè che si possono leggere in entrambi i versi(anna, alla, otto):
+\b 			--> ancoraggio per il blocco della parola
+(\w)		--> un carattere raggrupato per la backreference 1
+(\w)		--> un carattere raggrupato per la backreference 2
+\2			--> ripetizione del gruppo 2
+\1			--> ripetizione del gruppo 1
+\b          --> ancoraggio bordo
+
+"^(?P<cognome>[^,]+),(?P<nome>[^,]+)$" -->> trova 2 parole con la virgola
+
+"\.(?:py|php)$" trova tutte le parole che finiscono con . py o php
+
+"^[^.]*\.(?:py|php|java)$" trova tutto il file e non solo l'estensione
+
+"\x41" serve per trovare un caratere ascii nella stringa
+
+"c(?!h)" questa espressione verica le occorenze della lettera 'c'  solo nel casi non sia seguita dalla lettera 'h'
+
+"(?! )" se il testo che segue nelle parentesi è diverso da quello che segue
+"(?! )" se il testo che segue nelle parentesi è uguale da quello che segue
+
+"\bm(?=arco¦ino)" cerca in una frase se contiene il nome marco o mino
+
+"x(?=(\d+))" cerca se nella stringa ci sia una corrispondenza x con un numero
+d 			--> \d intende numeric
++			--> se ricorre una volta o più
+
+"?<=http:\/\/)[\w]+[\w.]+[\w]+" cerca espressioni che siano precedute da http:// e che inizino per wwww
+"\b\w+(?<!o)\b" espressioni che non finiscano per "o"
+
+"\b(?=\w{8}\b)\w{1,4}tex\w*" tutte le parole di 8 lettere che contengano la sotto stringa tex ma che non sia ne all'inizio ne alla fine senza l' il '*' finale non prende tutte le parole
+"\b" fissa l'inizio
+"(?=\w{8}\b)" che la parola sia di 8 caratteri sia numerici che letterali
+w{1,4} ci possono essere davati 4 caratteri generici
+tex >> il valore che mi interessa trovare
+\w* prende tutti i caratteri finali
+
+((\d{1,3})\.{3}\d{1,3}/\d{1,2} server per intercettare un indirizzo IP cpn CIDIR
+^(?!-)[a-zA-Z0-9-\\_]{1,63}$ per cname aggingendo i caratteri in coda permette di aggiungerli
+
+'^From:.+@' --> cerca una espressione che inizia con 'From' caratteri e poi ci sia '@''
+
+
+[a-zA-Z0-9]\S*@\S*[a-zA-Z]
+
+Per tradurre questa espressione regolare:
+cerchiamo sottostringhe che inizino con una singola lettera minuscola o maiuscola o un numero
+“[a-zA-Z0-9]”,
+seguito da zero o più caratteri non vuoti (“’S’*”),
+da una chiocciola, da zero o più caratteri non vuoti (“’S*“),
+da una lettera maiuscola o minuscola. Nota che siamo passati da”+" a “*”
+per indicare zero o più caratteri non vuoti dato che “[a-zA-Z0-9]”
+è già considerato un carattere non vuoto.
+
+Ricorda che “*” o “+” si applicano al singolo carattere immediatamente a sinistra
+del segno stesso.
+
+“[a-zA-Z]” alla fine della nostra espressione regolare,
+vogliamo che qualsiasi stringa trovata debba terminare con una lettera.
+
+
+^X-.*: [0-9.]+
+
+deve iniziare con una 'X'
+poi ci deve essere '-'
+
+una serie di lettere '.*' poi il carttere ':'
+
+un numero seguito da un punto '[0-9.]'
+in questo caso il punto non è un carattere speciale di wildcard perchè è chiuso nelle parentesi
+
+'\$[0-9.]+' anteponendo un back slash non considera $ un carattere speciale
+        (in questo caso cerca cifre in dollari)
+
+
+Ecco alcuni di quei caratteri speciali e sequenze di caratteri:
+ˆ Corrisponde all’inizio riga.
+$ Corrisponde alla fine riga.
+. Corrisponde a qualsiasi carattere (un carattere wild-card).
+\s corrisponde a uno spazio.
+\S corrisponde a un carattere diverso dallo spazio (opposto a \s).
+
+* Si applica al carattere immediatamente precedente e indica zero o più dei ripeti-
+zioni dello stesso.
+
+*? Si applica al carattere immediatamente precedente e indica zero
+   o più dei ripetizioni dello stesso in “modalità non avida”.
+
++ Si applica al carattere immediatamente precedente e indica uno o più dei caratteri precedenti.
+
++? Si applica al carattere immediatamente precedente e indica uno o più dei caratteri precedenti in “modalità non avida”.
+
+[aeiou] Corrisponde a un singolo carattere fintanto che quel carattere si trova nell’insieme specificato.
+In questo esempio, ricercherebbe “a”, “e”, “i”, “o” o “u” e nessun altro carattere.
+
+
+[a-z0-9] È possibile specificare intervalli di caratteri utilizzando il segno meno (-). In questo esempio si tratta di un singolo carattere che deve essere una lettera
+minuscola o una cifra.
+[ˆA-Za-z] Quando il primo carattere nella notazione è un accento circonflesso,
+si inverte la logica.
+In questo esempio viene ricercato un qualsiasi singolo carattere diverso da una lettera maiuscola o minuscola.
+
+()  Vengono aggiunte a un’espressione regolare vengono ignorate ai fini della ricerca,
+ma consentono di estrarre un particolare sottoinsieme della stringa desiderata,
+diversamente da quanto accade con findall() dove viene considerata l’intera riga.
+
+
+[ ]             a set of characters
+.               any character
+^               starts and
+$               ends with
+*               zero or more occurrences
++               one or more occurrences
+{ }             a specified number of occurrences
+?               zero or one occurrence
+|               logical "OR" operator
+\d              numeric digit
+\D              NOT numeric
+\w              alphanumeric character
+\W              NOT alphanumeric
+\s              blank space
+\S              NOT blank space
+
+
+
+
+
+
+
+
+
+
+

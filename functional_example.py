@@ -400,8 +400,69 @@ fruits = ['banana', 'apple', 'pear']
 colors = ['yellow', 'red', 'green']
 
 zipped = zip(fruits, colors)
-
 unzipped_fruits, unzipped_colors = zip(*zipped)
 
 print(unzipped_fruits)
 print(unzipped_colors)
+
+zipped_02 = zip(fruits, colors)
+
+for zip0 in zipped_02:
+    print(type(zip0), "----> ", zip0)
+
+'''
+output
+<class 'tuple'> ---->  ('banana', 'yellow')
+<class 'tuple'> ---->  ('apple', 'red')
+<class 'tuple'> ---->  ('pear', 'green')
+'''
+
+
+# Without ZIP
+a = [1, 2, 3, 4]
+b = [1, 2, 3, 5]
+
+are_equal = True
+for i in range(len(a)):
+    if a[i] != b[i]:
+        are_equal = False
+
+print(are_equal)
+
+are_equal = True
+#With ZIP
+a = [1, 2, 3, 4]
+b = [1, 2, 3, 5]
+
+for num1, num2 in zip(a, b):
+    if num1 != num2:
+        are_equal = False
+
+print(are_equal)
+
+
+zip_obkect = zip(a, b)
+
+print('type ', type(zip_obkect))
+print('zip ', zip_obkect)
+
+print(list(map(ord, 'spam'))) # ord() function returns the Unicode code point of a character
+print([ord(x) for x in 'spam'])
+
+
+l = list(map(lambda x: x ** 2, range(10)))
+
+print(l)
+
+list_result = [x for x in range(5) if x%2 == 0]
+print(list_result)
+
+# equivalente in forma più funzionale
+list_result = list(filter((lambda x: x%2 == 0), range(5)))
+print(list_result)
+
+list_result = [x ** 2 for x in range(10) if x % 2 == 0]
+print(list_result)
+
+list_result = list(map((lambda x: x ** 2), filter((lambda x: x%2 == 0), range(10))))
+print(list_result)

@@ -1,3 +1,13 @@
+def f(*args, **kargs):
+    print("Args: ", args)
+    print("Args Type: ", type(args)) #<class 'tuple'>
+    print("Kargs: ", kargs)
+    print("Kargs: ", kargs)
+    print("KArgs Type: ", type(kargs)) #<class 'dict'>
+
+f(galleons=100, sickles=50, knuts=25)
+f(100, 50, 25)
+
 def absolute_sum(*args):
     result = 0
     for arg in args:
@@ -23,11 +33,9 @@ def list_attributes(**kwargs):
 
 print(type(list_attributes(a=1, b=7, c=9)))
 
-
 def myFun_1(**kwargs):
 	for key, value in kwargs.items():
 		print("%s == %s" % (key, value))
-
 
 # Driver code
 myFun_1(first='Geeks', mid='for', last='Geeks')

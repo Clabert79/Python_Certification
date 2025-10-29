@@ -32,3 +32,12 @@ counter4 = counter1 - counter2 # all -ve numbers are excluded.For example z will
 
 print("Subtraction")
 print(counter4)
+
+# https://realpython.com/python-counter/ Deep dive
+
+from collections import Counter
+text = ('to be or not to be that is the question') 
+counter = Counter(text.split()) 
+print(counter)
+for word in sorted(counter):
+    print(f'{word:<12} {counter[word]}')
