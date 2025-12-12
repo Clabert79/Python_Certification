@@ -305,3 +305,6 @@ if __debug__:
 
 
 
+if 0 < 1:
+    raise ValueError('"y" must be a number') from None # 'From None' signifca che le precedenti eccezioni non devono essere sollevate
+

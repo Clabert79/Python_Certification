@@ -1,8 +1,269 @@
 from pickletools import string1
 from tokenize import String
 
-
 # https://realpython.com/python-getter-setter/
+# https://realpython.com/python-property/
+
+
+print("#0-----------------\n")
+
+'''
+property([fget=None, fset=None, fdel=None, doc=None])
+
+fget	A function object that returns the value of the managed attribute
+fset	A function object that allows you to set the value of the managed attribute
+fdel	A function object that defines how the managed attribute handles deletion
+doc	A string representing the property’s docstring
+'''
+
+class CircleP:
+    def __init__(self, radius):
+        self._radius = radius
+
+    def _get_radius(self):
+        print("Get radius")
+        return self._radius
+    
+    def _set_radius(self, value):
+        print("Set radius")
+        self._radius = value
+
+    def _del_radius(self):
+        print("Delete radius")
+        del self._radius
+
+    radius = property(
+        fget=_get_radius,
+        fset=_set_radius,
+        fdel=_del_radius,
+        doc="The radius property"
+    )
+
+    radius_lambda = property(lambda self: self._radius)
+
+circle = CircleP(42.0)
+print(circle.radius)
+print(circle.radius_lambda)
+
+circle.radius = 100.0  
+print(circle.radius)  
+
+del circle.radius
+try:
+    print(circle.radius)  
+except Exception as e:
+    print(e)
+
+# help(circle)
+
+class CircleD:
+    def __init__(self, radius):
+        self._radius = radius
+
+    @property
+    def radius(self):
+        """The radius property"""
+        print("Get radius")
+        return self._radius
+    
+    @radius.setter
+    def radius(self, value):
+        print("Set radius")
+        self._radius = value
+
+    @radius.deleter
+    def radius(self):
+        print("Delete radius")
+
+print("#Decorator ------------->> ", dir(CircleD.radius))
+
+class PointReadOnly:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+        
+    @property
+    def x(self):
+        return self._x
+    @property
+    def y(self):
+        return self._y
+    
+#Write Only
+import hashlib
+import os
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+    
+    @property
+    def password(self):
+        raise AttributeError("Password is write-only")
+    
+    @password.setter
+    def password(self, plaintext):
+        salt = os.urandom(32)
+        self._hashed_password = hashlib.pbkdf2_hmac(salt 
+                                + plaintext.encode("utf-8")).hexdigest()
+
+
+class Point:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+
+    def get_x(self):
+        print("Getting x: ", self._x)
+        return self._x
+
+    def set_x(self, value):
+        self._x = value
+
+    def get_y(self):
+        print("Getting y: ", self._y)
+        return self._y
+
+    def set_y(self, value):
+        self._y = value
+
+
+point = Point(12, 5)
+
+point.get_x()
+point.get_y()
+
+point.set_x(42)
+point.get_x()
+
+print("Private -->>", point._x)
+print("Private -->>",point._y)
+class PointValidate:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    @property
+    def x(self):
+        return self._x
+    
+    @x.setter
+    def x(self, value):
+        try:
+            self._x = float(value)
+            print("Validated")
+        except:
+            raise ValueError("x must be a float") from None
+    @property
+    def y(self):
+        return self._y
+
+    @y.setter
+    def y(self, value):
+        try:
+            self._y = float(value)
+            print("Validated!")
+        except ValueError:
+            raise ValueError('"y" must be a number') from None
+
+class propSquare:
+    def __init__(self, start):
+        self.value = start
+    def getX(self):
+        return self.value ** 2
+    def setX(self, value):
+        self.value = value;
+    x = property(getX, setX)
+
+P = propSquare(3)
+Q = propSquare(32)
+print(P.x)
+print(Q.x)
+
+#Esempio di implementazione di di una Property
+class Property:
+    def __init__(self, fget=None, fset=None, fdel=None, doc=None):
+        self.fget = fget
+        self.fset = fset
+        self.fdel = fdel
+        if doc is None and fget is not None:
+            doc = fget.__doc__
+    def __get__(self, instance, instancetype=None):
+        if instance is None:
+            return self
+        if self.fget is None:
+            raise AttributeError("can't get attribute")
+        return self.fget(instance)
+    def __set__(self, instance, value):
+        if self.fset is None:
+            raise AttributeError("can't set attribute")
+        self.fset(instance, value)
+    def __delete__(self, instance):
+        if self.fdel is None:
+            raise AttributeError("can't delete attribute")
+        self.fdel(instance)
+
+class Person:
+    def getName(self):
+        print("Getting name")
+        return self.__name
+    def setName(self, value):
+        print("Setting name to " + value)
+        self.__name = value
+    name = Property(getName, setName)
+    
+
+class WriteCoordinateError(Exception):
+    pass
+
+class Point:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+    @property
+    def x(self):
+        return self._x
+    
+    @x.setter
+    def x(self, value):
+        raise WriteCoordinateError("x cordinate read only")
+
+    @property
+    def y(self):
+        return self._y
+
+    @y.setter
+    def y(self, value):
+        raise WriteCoordinateError("y cordinate read only")
+ 
+    def __str__(self):
+        return f"({self._x}, {self._y})"
+    
+print("#Circle------------\n")
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        self._radius = float(value)
+
+    @property
+    def diameter(self):
+        return self.radius * 2
+
+    @diameter.setter
+    def diameter(self, value):
+        self.radius = value / 2
+
+circle = Circle(42)
+print(circle.radius)
+print(circle.diameter)
 
 print("#1-----------------\n")
 class Sensore():
@@ -66,7 +327,6 @@ class Sensore3():
     temp = property()
     temp = temp.getter(getTemp)
     temp = temp.setter(setTemp)  
-
 
 s3 = Sensore3()
 s3.temp = 30.0
@@ -260,29 +520,65 @@ print("-----------------------------------------------")
 
 class Person:
     def __init__(self, age) -> None:
-        self.age = age
+        self._age = age  # Meglio usare _age come attributo privato
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
 
     def get_age(self):
         print("Getting the age ...")
-        return self.age;
+        return self._age
 
     def set_age(self, age):
         if age < 0:
             print("He cannot have negative age")
         else:
             print("Setting age ...")
-            self.age = age
+            self._age = age  # Corretto: usa il valore passato
     
-    def cataegory(self):
-        if self.age < 13:
+    age = property(get_age, set_age)  # Posizionata correttamente
+    
+    def category(self):  # Nome corretto
+        if self._age < 13:
             return "Kid"
-        elif self.age >= 13 and self.age <= 19:
+        elif self._age >= 13 and self._age <= 19:
             return "Teen"
-        elif self.age > 19 and self.age < 65:
-            return "Teen"
+        elif self._age > 19 and self._age < 65:
+            return "Adult"  # Corretto!
         else:
             return "Elderly"
-    age = property(get_age, set_age)
-
 
 person = Person(25)
+print(person.category())  # Output: Adult
+print(person.age)         # Output: Getting the age ... 25
+person.age = 30           # Output: Setting age ...
+print(person.age)         # Output: Getting the age ... 30
+
+
+# Ovveriding
+class Employee(Person):
+    @property
+    def name(self):
+        return super().name.upper()
+
+employee = Employee(35)
+employee.name = "Steve"
+print(employee.name)
+
+print('--------------Attribute------------------')
+class Catcher:
+    def __getattr__(self, name):
+        print("Getting the {} attribute".format(name))
+    def __setattr__(self, name, value):
+        print("Setting the {} attribute to {}".format(name, value))
+        super().__setattr__(name, value)
+
+C = Catcher()
+C.job
+C.pay = 100
+print(C.pay)

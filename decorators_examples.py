@@ -22,9 +22,34 @@ def foo():
 foo = myfunction(x, y)(foo)
 
 equivale
-@myfunction(x, y) def foo():
+@myfunction(x, y) 
+def foo():
     pass
 """
+#Simulazione comportamento Decorator Property
+class Descriptor(object):
+    def __get__(self, instance, owner):
+        print('Get -->', self, instance, owner, sep='\n')
+class Subject:
+    attr = Descriptor()
+X = Subject()
+
+X.attr
+class decorator:
+    def __init__(self, func):
+        print("__init__")
+        self.func = func
+    def __call__(self, *args):
+        print("__call__")
+
+@decorator
+def func_01(args):
+    for arg in args:
+        result += abs(arg)
+
+    print(result)
+
+func_01(3, 5, -6)
 
 import functools
 
@@ -333,6 +358,7 @@ p = Point(2, 3)
 print(p)
 
 from functools import wraps
+
 def logged(func):
     # Idea:Give me a function, I' ll put logging
     # around it
@@ -349,3 +375,28 @@ def logged(func):
     #wrapper.__doc__ = func.__doc__
 
     return wrapper
+
+
+class tracer:
+    def __init__(self, func):
+        self.calls = 0
+        self.func = func
+    def __call__(self, *args):
+        self.calls += 1
+        print(f"call {self.calls} to '{self.func.__name__}'")
+        self.func(*args)
+
+@tracer
+def spam_dec(a, b, c):
+    print('Spam -->> ', a + b + c)
+
+spam_dec(1, 2, 4)
+
+spam_dec(5, 6, 7)
+
+spam_dec(5, 6, 7)
+
+spam_dec(5, 6, 7)
+
+print(type(spam_dec)) # <class '__main__.tracer'>
+
